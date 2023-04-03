@@ -5,7 +5,16 @@ class NewsModal{
 
   NewsModal({this.status, this.totalResults, this.articleList});
 
-  void newsJ
+  NewsModal newsJson(Map m1)
+  {
+    status=m1['status'];
+    totalResults=m1['totalResults'];
+
+    List aList=m1['articles'];
+    articleList = aList.map((e) => Articles().articleJson(e)).toList();
+    NewsModal n1 = NewsModal(totalResults: totalResults,status: status ,articleList: articleList);
+    return n1;
+  }
 }
 
 class Articles {
@@ -48,14 +57,15 @@ class Articles {
 }
 
 class Source {
-  String? name;
+  String? name,id;
 
-  Source({this.name});
+  Source({this.id,this.name});
 
   Source sourceJson(Map m1) {
+    id=m1['id'];
     name = m1['name'];
 
-    Source s1 = Source(name: name);
+    Source s1 = Source(name: name,id: id);
     return s1;
   }
 }

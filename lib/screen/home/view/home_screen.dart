@@ -27,30 +27,41 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Color(0xffE1E5EA),
         ),
         body: Column(
-          // children: [
-          //   ElevatedButton(
-          //     onPressed: () {
-          //       HPTrue!.jsonParsing();
-          //     },
-          //     child: Text("News"),
-          //   ),
-          //   SizedBox(height: 15,),
-          //   Expanded(
-          //     child: ListView.builder(
-          //       itemCount: HPTrue!.ArticleList.length,
-          //       itemBuilder: (context, index) {
-          //         return Container(
-          //           child: Column(
-          //             children: [
-          //               Image.network("${HPTrue!.ArticleList[index].urlToImage}"),
-          //               Text("${HPTrue!.ArticleList[index].source!.name}"),
-          //             ],
-          //           ),
-          //         );
-          //       },
-          //     ),
-          //   ),
-          // ],
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                HPTrue!.jsonParsing();
+              },
+              child: Text("News"),
+            ),
+            SizedBox(height: 15,),
+            Expanded(
+              child: ListView.builder(
+                itemCount: HPTrue!.newsModal!.articleList!.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Column(
+                      children: [
+                        Image.network("${HPTrue!.newsModal!.articleList![index].urlToImage}"),
+                        Text(
+                          "${HPTrue!.newsModal!.articleList![index].title}",
+                          style: TextStyle(
+                            fontSize: 40,
+                          ),
+                        ),
+                        Text(
+                          "${HPTrue!.newsModal!.articleList![index].author}",
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
